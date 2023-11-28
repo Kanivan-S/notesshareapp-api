@@ -68,7 +68,8 @@ const CreateAccount = async (req, res) => {
                     const data=await Users.create({
                         useremail:mail,
                         password:hash,
-                        otp:hashedotp
+                        otp:hashedotp,
+                        tokenexpire:(Date.now()+(2*60*1000)).toString()
                     })
                     await mailfns.sendOTP(req,res,OTP,data.useremail);
                 }

@@ -18,9 +18,6 @@ const Users=sequelize.define("users",{
         type:DataTypes.TEXT,
         validate:{notNull:true,notEmpty: true }
     },
-    resettoken:{
-        type:DataTypes.TEXT
-    },
     otp:{
         type:DataTypes.TEXT   
     },

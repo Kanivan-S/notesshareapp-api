@@ -52,7 +52,8 @@ const Login = async (req, res) => {
                     const OTP = otpGenerator.generate(6, {digits:true,upperCaseAlphabets: false,lowerCaseAlphabets:false, specialChars: false });
                     const hashedotp = crypto.createHash('sha256').update(OTP).digest('base64');
                     await data.update({
-                        otp:hashedotp
+                        otp:hashedotp,
+                        tokenexpire:(Date.now()+(2*60*1000)).toString()
                     })
                     await mailfns.sendOTP(req,res,OTP,data.useremail);
                 }
